@@ -9,8 +9,12 @@
 # [*manage*]
 #   Whether to manage gitdaemon using Puppet. Valid values are true (default) 
 #   and false.
-# [*ensure*]
-#   Status of gitdaemon. Valid values are 'present' (default) and 'absent'.
+# [*manage_config*]
+#   Whether to manage the system service using Puppet. Valid values are true 
+#   (default) and false.
+# [*manage_packetfilter*]
+#   Whether to manage the packet filtering using Puppet. Valid values are true 
+#   (default) and false.
 #
 # == Authors
 #
@@ -22,15 +26,31 @@
 #
 class gitdaemon
 (
-    Boolean                  $manage = true,
-    Enum['present','absent'] $ensure = 'present'
+    Boolean $manage = true,
+    Boolean $manage_config = true,
+    Boolean $manage_packetfilter = true,
+    String  $allow_ipv4_address = '127.0.0.1',
+    String  $allow_ipv6_address = '::1'
 
 ) inherits gitdaemon::params
 {
 
 if $manage {
-    class { '::gitdaemon::install':
-        ensure => $ensure,
+    include ::gitdaemon::install
+
+    # UNIMPLEMENTED
+    #if $manage_config {
+    #    class { '::gitdaemon::config':
+    #    }
+    #}
+
+    include ::gitdaemon::service
+
+    if $manage_packetfilter {
+        class { '::gitdaemon::packetfilter':
+            allow_ipv4_address => $allow_ipv4_address,
+            allow_ipv6_address => $allow_ipv6_address,
+        }
     }
 }
 }

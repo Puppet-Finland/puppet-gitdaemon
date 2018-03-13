@@ -7,7 +7,6 @@
   "source": "https://github.com/Puppet-Finland/puppet-gitdaemon.git",
   "project_page": "https://github.com/Puppet-Finland/puppet-gitdaemon",
   "dependencies": [
-    { "name": "puppetfinland/os", "version_requirement": ">= 1.0.0" },
-    { "name": "puppetfinland/systemd", "version_requirement": ">= 0.1.2" }
+    { "name": "puppetfinland/os", "version_requirement": ">= 1.0.0" }
   ]
 }

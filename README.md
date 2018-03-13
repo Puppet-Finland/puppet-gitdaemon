@@ -1,6 +1,7 @@
 # puppet-gitdaemon
 
-A Puppet module for managing git-daemon
+A Puppet module for managing git-daemon. Install, service and packetfilter are 
+supported right now.
 
 # Module usage
 

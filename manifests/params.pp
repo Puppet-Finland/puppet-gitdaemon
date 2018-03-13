@@ -8,6 +8,7 @@ class gitdaemon::params {
     case $::osfamily {
         'Debian': {
             $package_name = 'git-daemon-sysvinit'
+            $service_name = 'git-daemon'
         }
         default: {
             fail("Unsupported OS: ${::osfamily}")

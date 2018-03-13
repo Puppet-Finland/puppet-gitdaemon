@@ -2,13 +2,9 @@
 #
 # This class installs gitdaemon
 #
-class gitdaemon::install
-(
-    $ensure
-
-) inherits gitdaemon::params
+class gitdaemon::install inherits gitdaemon::params
 {
     package { $::gitdaemon::params::package_name:
-        ensure   => $ensure,
+        ensure => 'present',
     }
 }
