@@ -1,14 +1,22 @@
 # puppet-gitdaemon
 
 A Puppet module for managing git-daemon. Install, service and packetfilter are 
-supported right now.
+supported. On Debian basic git-daemon configuration is also supported via 
+/etc/default/git-daemon.
 
 # Module usage
 
-Setup git-daemon using Hiera:
+Example usage from a profile:
 
-    classes:
-        - gitdaemon
+    class { '::gitdaemon':
+        directory          => '/var/lib/repos',
+        allow_ipv4_address => lookup('intranet'),
+    }
+    
+    # allow git-daemon to export a repository
+    file { '/var/lib/repos/myrepo.git/git-daemon-export-ok':
+        ensure => 'present',
+    }
 
 For details, see
 

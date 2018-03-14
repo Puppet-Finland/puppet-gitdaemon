@@ -15,6 +15,16 @@
 # [*manage_packetfilter*]
 #   Whether to manage the packet filtering using Puppet. Valid values are true 
 #   (default) and false.
+# [*base_path*]
+#   Base path for git-daemon. On Debian this defaults to '/var/lib'.
+# [*directory*]
+#   Directory where Git repositories served by git-daemon are located. On Debian 
+#   this defaults to '/var/lib/git'.
+# [*allow_ipv4_address*]
+#   IPv4 address or subnet from which to allow access. Defaults to '127.0.0.1'.
+# [*allow_ipv6_address*]
+#   IPv6 address or subnet from which to allow access. Defaults to '::1'.
+
 #
 # == Authors
 #
@@ -29,6 +39,8 @@ class gitdaemon
     Boolean $manage = true,
     Boolean $manage_config = true,
     Boolean $manage_packetfilter = true,
+    String  $base_path = $::gitdaemon::params::base_path,
+    String  $directory = $::gitdaemon::params::directory,
     String  $allow_ipv4_address = '127.0.0.1',
     String  $allow_ipv6_address = '::1'
 
@@ -38,11 +50,12 @@ class gitdaemon
 if $manage {
     include ::gitdaemon::install
 
-    # UNIMPLEMENTED
-    #if $manage_config {
-    #    class { '::gitdaemon::config':
-    #    }
-    #}
+    if $manage_config {
+        class { '::gitdaemon::config':
+            base_path => $base_path,
+            directory => $directory,
+        }
+    }
 
     include ::gitdaemon::service
 
