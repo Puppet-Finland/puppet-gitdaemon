@@ -2,7 +2,7 @@
   "name": "puppetfinland-gitdaemon",
   "version": "0.2.0",
   "author": "Puppet-Finland team",
-  "license": "BSD license",
+  "license": "BSD-2-Clause",
   "summary": "Setup gitdaemon",
   "source": "https://github.com/Puppet-Finland/puppet-gitdaemon.git",
   "project_page": "https://github.com/Puppet-Finland/puppet-gitdaemon",
