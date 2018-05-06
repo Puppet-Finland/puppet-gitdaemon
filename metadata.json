@@ -2,12 +2,35 @@
   "name": "puppetfinland-gitdaemon",
   "version": "0.2.0",
   "author": "Puppet-Finland team",
-  "license": "BSD-2-Clause",
   "summary": "Setup gitdaemon",
+  "license": "BSD-2-Clause",
   "source": "https://github.com/Puppet-Finland/puppet-gitdaemon.git",
   "project_page": "https://github.com/Puppet-Finland/puppet-gitdaemon",
   "dependencies": [
-    { "name": "puppetfinland/os", "version_requirement": ">= 1.0.0" },
-    { "name": "puppetlabs/inifile", "version_requirement": ">= 1.4.0" }
-  ]
+    {
+      "name": "puppetfinland/os",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name": "puppetlabs/inifile",
+      "version_requirement": ">= 1.4.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "9"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.7.0 < 6.0.0"
+    }
+  ],
+  "pdk-version": "1.4.1",
+  "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
+  "template-ref": "1.4.1-0-g52adbbb"
 }
